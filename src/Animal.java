@@ -5,7 +5,7 @@ public class Animal {
     private int weight;
     private int cuteFactor;
     private String personality;
-    private HashSet<String> physicalFeatures;
+    private final HashSet<String> physicalFeatures;
     private String threatLevel;
 
     public Animal(String name, int weight, int cuteFactor, String personality, HashSet<String> physicalFeatures, String threatLevel) throws Exception {
