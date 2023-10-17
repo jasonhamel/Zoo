@@ -45,36 +45,29 @@ public class Zoo {
         return pen;
     }
 
-    public Animal getOneFish(String name) {
-
-        return aquarium.stream()
+    public Animal getOne(Animal animal, String name) {
+        if (animal instanceof Reptile) {
+            return herpetarium.stream()
+                    .filter(reptile -> Objects.equals(reptile.getName(), name))
+                    .findFirst()
+                    .orElse(null);
+        } else if (animal instanceof Mammal) {
+            return pen.stream()
+                    .filter(mammal -> Objects.equals(mammal.getName(), name))
+                    .findFirst()
+                    .orElse(null);
+        } else if (animal instanceof Bird) {
+            return aviary.stream()
+                    .filter(bird -> Objects.equals(bird.getName(), name))
+                    .findFirst()
+                    .orElse(null);
+        } else {
+            return aquarium.stream()
                     .filter(fish -> Objects.equals(fish.getName(), name))
                     .findFirst()
                     .orElse(null);
-    }
+        }
 
-    public Animal getOneBird(String name) {
-
-        return aviary.stream()
-                .filter(bird -> Objects.equals(bird.getName(), name))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public Animal getOneMammal(String name) {
-
-        return pen.stream()
-                .filter(mammal -> Objects.equals(mammal.getName(), name))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public Animal getOneReptile(String name) {
-
-        return herpetarium.stream()
-                .filter(reptile -> Objects.equals(reptile.getName(), name))
-                .findFirst()
-                .orElse(null);
     }
 
     public void remove(Animal animal, String name) {

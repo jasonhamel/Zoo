@@ -89,10 +89,9 @@ public class TestZoo {
         zoo.addAquarium(clownfish);
         zoo.addAquarium(eel);
         zoo.addAquarium(shark);
-        Assert.assertEquals("Nemo", zoo.getOneFish("Nemo").getName());
-        Assert.assertEquals("Eel-ectric", zoo.getOneFish("Eel-ectric").getName());
-        Assert.assertEquals("Sea Bear", zoo.getOneFish("Sea Bear").getName());
-        Assert.assertNull(zoo.getOneFish("Jason"));
+        Assert.assertEquals("Nemo", zoo.getOne(clownfish, "Nemo").getName());
+        Assert.assertEquals("Eel-ectric", zoo.getOne(eel, "Eel-ectric").getName());
+        Assert.assertEquals("Sea Bear", zoo.getOne(shark, "Sea Bear").getName());
     }
 
     @Test
@@ -100,10 +99,9 @@ public class TestZoo {
         zoo.addAviary(owl);
         zoo.addAviary(penguin);
         zoo.addAviary(puffin);
-        Assert.assertEquals("Hootsy", zoo.getOneBird("Hootsy").getName());
-        Assert.assertEquals("Pingu", zoo.getOneBird("Pingu").getName());
-        Assert.assertEquals("Puff", zoo.getOneBird("Puff").getName());
-        Assert.assertNull(zoo.getOneBird("Jason"));
+        Assert.assertEquals("Hootsy", zoo.getOne(owl, "Hootsy").getName());
+        Assert.assertEquals("Pingu", zoo.getOne(penguin, "Pingu").getName());
+        Assert.assertEquals("Puff", zoo.getOne(puffin, "Puff").getName());
     }
 
     @Test
@@ -111,10 +109,9 @@ public class TestZoo {
         zoo.addHerpetarium(chameleon);
         zoo.addHerpetarium(snake);
         zoo.addHerpetarium(turtle);
-        Assert.assertEquals("Cam", zoo.getOneReptile("Cam").getName());
-        Assert.assertEquals("Esses", zoo.getOneReptile("Esses").getName());
-        Assert.assertEquals("Torts", zoo.getOneReptile("Torts").getName());
-        Assert.assertNull(zoo.getOneReptile("Jason"));
+        Assert.assertEquals("Cam", zoo.getOne(chameleon, "Cam").getName());
+        Assert.assertEquals("Esses", zoo.getOne(snake, "Esses").getName());
+        Assert.assertEquals("Torts", zoo.getOne(turtle, "Torts").getName());
     }
 
     @Test
@@ -122,10 +119,9 @@ public class TestZoo {
         zoo.addPen(cat);
         zoo.addPen(dog);
         zoo.addPen(giraffe);
-        Assert.assertEquals("Iris", zoo.getOneMammal("Iris").getName());
-        Assert.assertEquals("Argo", zoo.getOneMammal("Argo").getName());
-        Assert.assertEquals("Gira", zoo.getOneMammal("Gira").getName());
-        Assert.assertNull(zoo.getOneMammal("Jason"));
+        Assert.assertEquals("Iris", zoo.getOne(cat, "Iris").getName());
+        Assert.assertEquals("Argo", zoo.getOne(dog, "Argo").getName());
+        Assert.assertEquals("Gira", zoo.getOne(giraffe, "Gira").getName());
     }
 
     @Test
@@ -135,6 +131,8 @@ public class TestZoo {
         zoo.addAquarium(eel);
         Assert.assertTrue(zoo.getAllBirds().isEmpty());
         Assert.assertTrue(zoo.getAllReptiles().isEmpty());
+        Assert.assertFalse(zoo.getAllMammals().isEmpty());
+        Assert.assertFalse(zoo.getAllFish().isEmpty());
         zoo.remove(eel, eel.getName());
         Assert.assertTrue(zoo.getAllFish().isEmpty());
         zoo.remove(cat, cat.getName());
