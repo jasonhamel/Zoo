@@ -1,7 +1,10 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class TestZoo {
 
@@ -137,5 +140,65 @@ public class TestZoo {
         Assert.assertTrue(zoo.getAllFish().isEmpty());
         zoo.remove(cat, cat.getName());
         Assert.assertFalse(zoo.getAllMammals().isEmpty());
+    }
+
+    @Test
+    public void testGetPen() {
+        zoo.addPen(cat);
+        zoo.addPen(dog);
+        zoo.addPen(giraffe);
+        HashSet<Mammal> testPen = zoo.getPen();
+        List<Mammal> noMammalHere = new ArrayList<>();
+        for (Mammal mammal: testPen) {
+            if (!(mammal instanceof Mammal)) {
+                noMammalHere.add(mammal);
+            }
+        }
+        Assert.assertTrue(noMammalHere.isEmpty());
+    }
+
+    @Test
+    public void testGetAviary() {
+        zoo.addAviary(owl);
+        zoo.addAviary(penguin);
+        zoo.addAviary(puffin);
+        HashSet<Bird> testAviary = zoo.getAviary();
+        List<Bird> noBirdsHere = new ArrayList<>();
+        for (Bird bird : testAviary) {
+            if (!(bird instanceof Bird)) {
+                noBirdsHere.add(bird);
+            }
+        }
+        Assert.assertTrue(noBirdsHere.isEmpty());
+    }
+
+    @Test
+    public void testGetHerpetarium() {
+        zoo.addHerpetarium(chameleon);
+        zoo.addHerpetarium(snake);
+        zoo.addHerpetarium(turtle);
+        HashSet<Reptile> testHerpetarium = zoo.getHerpetarium();
+        List<Reptile> noReptilesHere = new ArrayList<>();
+        for (Reptile reptile : testHerpetarium) {
+            if (!(reptile instanceof Reptile)) {
+                noReptilesHere.add(reptile);
+            }
+        }
+        Assert.assertTrue(noReptilesHere.isEmpty());
+    }
+
+    @Test
+    public void testGetAquarium() {
+        zoo.addAquarium(clownfish);
+        zoo.addAquarium(eel);
+        zoo.addAquarium(shark);
+        HashSet<Fish> testAqua = zoo.getAquarium();
+        List<Fish> noFishHere = new ArrayList<>();
+        for (Fish fish: testAqua) {
+            if (!(fish instanceof Fish)) {
+                noFishHere.add(fish);
+            }
+        }
+        Assert.assertTrue(noFishHere.isEmpty());
     }
 }

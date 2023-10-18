@@ -94,5 +94,21 @@ public class Zoo {
         }
     }
 
+    public HashSet<Fish> getAquarium() {
+        return aquarium;
+    }
+
+    public HashSet<Mammal> getPen() {
+        return pen;
+    }
+
+    public HashSet<Bird> getAviary() {
+        return aviary;
+    }
+
+    public HashSet<Reptile> getHerpetarium() {
+        return herpetarium;
+    }
+
 
 }
